@@ -5,18 +5,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width= device-width,initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
-        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
         <title> {% block title %} {% endblock title %} </title>
     </head>
     <body>
+
         <ul class="nav-ul">
             <li><a href="{% url 'polls:index' %}">Home</a></li>
         </ul>
         <hr>
-        <!-- body -->
-        {% block content %} {% endblock content %}
+        
+        <div class="container">
+            <!-- body -->
+            {% block content %} {% endblock content %}            
+        </div>
         <!-- scripts -->
-        <script src=""></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     </body>
     <html>

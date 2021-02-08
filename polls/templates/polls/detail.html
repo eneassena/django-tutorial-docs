@@ -1,9 +1,9 @@
-{% extends "polls_base.html" %}
+{% extends "admin/polls_base.html" %}
 {% block title %} Listagem Choice {% endblock title %}
 {% block content %}
 
 <div class="box-table">
-    <h1>{{ question.question_text }}</h1>
+    <h1 class="text-muted text-center">{{ question.question_text }}</h1>
     {% if error_message %}
     <p><strong> {{error_message}} </strong></p>
     {% endif %}
@@ -11,10 +11,10 @@
     <form action="{% url 'polls:vote' question.id %}" method="post">
         {% csrf_token %}
         {% for choice in question.choice_set.all %}
-        <p>
-            <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
-            <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label>
-        </p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+            <label class="form-check-label" for="choice{{forloop.counter}}">{{choice.choice_text}}</label>
+        </div>
         {% endfor %}
         <input type="submit" value="Vote">
     </form>
