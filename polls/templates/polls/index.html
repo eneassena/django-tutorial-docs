@@ -1,0 +1,23 @@
+{% extends "polls_base.html" %}
+{% block title %} Listagem Question {% endblock title %}
+{% block content %}
+{% if latest_question_list %}
+<div class="box-table">
+    <h1>Listagem Question</h1>
+    <table>
+        <tr>
+            <th>Text</th>
+            <th>Date</th>
+        </tr>
+        {% for question in latest_question_list %}
+        <tr>
+            <td><a class="link" href="{% url 'polls:detail' question.pk %}">{{question.question_text }}</a></td>
+            <td>{{question.pub_date }}</td>
+        </tr> 
+        {% endfor %}
+    </table>
+    {% else %}
+        <h3>Não há Question Cadastrada.</h3>
+    {% endif %}
+</div>
+{% endblock content %}
